@@ -1,16 +1,15 @@
-const express = require('express');
+const express = require('express')
 
-const PORT = 8080;
-const HOST = '0.0.0.0';
+const PORT = process.env.PORT || 3000
 
-const app = express();
+const app = express()
 
-app.get('/', (req, res) => {
-  res.send('salut!\n');
-});
+app.get('/', (request, response) => {
+  return response.json({
+    data: {
+      message: `API is functional`,
+    },
+  })
+})
 
-app.get('/health', (req, res) => {
-  res.send('The API is healthy, thanks for checking!\n');
-});
-
-app.listen(PORT, HOST);
+app.listen(PORT, () => console.log(`App running on port ${PORT}`))
