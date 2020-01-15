@@ -5,6 +5,10 @@ const HOST = '0.0.0.0';
 
 const app = express();
 
+app.get('/', (req, res) => {
+  res.send('salut!\n');
+});
+
 app.get('/health', (req, res) => {
   res.send('The API is healthy, thanks for checking!\n');
 });
