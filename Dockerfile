@@ -8,8 +8,5 @@ RUN npm ci
 # Copy app contents
 COPY . .
 
-# App runs on port 8080
-EXPOSE 8080
-
 # Start the app
 CMD [ "npm", "start"]
