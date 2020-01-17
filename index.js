@@ -1,15 +1,19 @@
-const express = require('express')
+const express = require('express');
+const routes = require('./route');
+const bodyParser = require('body-parser');
+const sqsProcess = require('./sqs');
 
-const PORT = process.env.PORT || 3000
+const app = express();
+const PORT = process.env.PORT || 3000;
 
-const app = express()
+app.use(bodyParser.json());
+app.use('/api', routes);
 
-app.get('/', (request, response) => {
-  return response.json({
-    data: {
-      message: `API is functional`,
-    },
+app.use((req, res) => {
+  res.status(404).json({
+    error: true,
+    message: 'Route not found'
   })
-})
+});
 
-app.listen(PORT, () => console.log(`App running on port ${PORT}`))
+app.listen(PORT, () => console.log(`App running on port ${PORT}`));
