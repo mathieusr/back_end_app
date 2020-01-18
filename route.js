@@ -57,7 +57,8 @@ router.route('/products')
             success: false,
             message: "An error occured",
             error: err,
-            cred: cred
+            cred: cred,
+            acc: cred.accessKeyId
           });
 
         return res.json({
