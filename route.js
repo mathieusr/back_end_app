@@ -3,8 +3,6 @@ const router = express.Router();
 const AWS = require('aws-sdk');
 const uuid = require('uuid/v4')
 const { check, validationResult, body } = require('express-validator');
-const cred = new AWS.Credentials();
-
 AWS.config.credentials = new AWS.EC2MetadataCredentials({ httpOptions: {timeout: 10000} });
 const dynamodb = new AWS.DynamoDB.DocumentClient({region: "eu-west-3"});
 
@@ -58,9 +56,8 @@ router.route('/products')
             success: false,
             message: "An error occured",
             error: err,
-            cred: cred,
-            acc: cred.accessKeyId,
-            tttt: 'ttttt'
+            cred: AWS.config.credentials,
+            tttt: 'ttttts'
           });
 
         return res.json({
