@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const AWS = require('aws-sdk');
 const uuid = require('uuid/v4')
-const dynamodb = new AWS.DynamoDB.DocumentClient({region: "eu-west-3"});
+const dynamodb = new AWS.DynamoDB.DocumentClient({region: "eu-west-3", credentials: AWS.config.credentials});
 const { check, validationResult, body } = require('express-validator');
 
 router.route('/products')

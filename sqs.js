@@ -1,6 +1,6 @@
 const {Consumer} = require('sqs-consumer');
 const AWS = require('aws-sdk');
-const dynamodb = new AWS.DynamoDB.DocumentClient({region: "eu-west-3"});
+const dynamodb = new AWS.DynamoDB.DocumentClient({region: "eu-west-3", credentials: AWS.config.credentials});
 
 const sqsProcess = Consumer.create({
     queueUrl: process.env.EVENT_SERVICE_URL,
