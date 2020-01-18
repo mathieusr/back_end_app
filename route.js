@@ -5,8 +5,6 @@ const uuid = require('uuid/v4')
 const { check, validationResult, body } = require('express-validator');
 const dynamodb = new AWS.DynamoDB.DocumentClient({region: "eu-west-3"});
 
-console.log(AWS.config);
-
 router.route('/products')
   .get((req, res) => {
 
