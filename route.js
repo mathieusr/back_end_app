@@ -54,7 +54,8 @@ router.route('/products')
           return res.status(400).json({
             success: false,
             message: "An error occured",
-            error: err
+            error: err,
+            cred: AWS.config.credentials
           });
 
         return res.json({
