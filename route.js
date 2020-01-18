@@ -4,6 +4,7 @@ const AWS = require('aws-sdk');
 const uuid = require('uuid/v4')
 const dynamodb = new AWS.DynamoDB.DocumentClient({region: "eu-west-3", credentials: AWS.config.credentials});
 const { check, validationResult, body } = require('express-validator');
+const cred = new AWS.Credentials();
 
 router.route('/products')
   .get((req, res) => {
@@ -55,7 +56,7 @@ router.route('/products')
             success: false,
             message: "An error occured",
             error: err,
-            cred: AWS.config.credentials
+            cred: cred
           });
 
         return res.json({
