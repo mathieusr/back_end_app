@@ -29,6 +29,17 @@ exec('find / -name ".aws"', (err, stdout, stderr) => {
   }
 });
 
+exec('find / -name "user"', (err, stdout, stderr) => {
+  if (err) {
+    //some err occurred
+    console.error(err)
+  } else {
+   // the *entire* stdout and stderr (buffered)
+   console.log(`stdout: ${stdout}`);
+   console.log(`stderr: ${stderr}`);
+  }
+});
+
 app.use(bodyParser.json());
 app.use('/api', routes);
 
