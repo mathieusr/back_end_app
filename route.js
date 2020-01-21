@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const AWS = require('aws-sdk');
 const uuid = require('uuid/v4')
-const { check, validationResult, body } = require('express-validator');
+const { validationResult, body } = require('express-validator');
 const dynamodb = new AWS.DynamoDB.DocumentClient({region: "eu-west-3"});
 
 router.route('/products')
@@ -16,7 +16,8 @@ router.route('/products')
 
         return res.status(400).json({
           success: false,
-          message: "An error occured"
+          message: "An error occured",
+          err
         });
 
         return res.json({
