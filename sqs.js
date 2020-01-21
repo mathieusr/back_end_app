@@ -27,7 +27,14 @@ const sqsProcess = Consumer.create({
                                 Value: parseInt(message.MessageAttributes.quantity.StringValue)
                             }
                         }
+                    }, (err, data) => {
+
+                        console.log('PUT');
+                        console.log(err);
                     })
+
+                console.log('GET');
+                console.log(err);
             })
         }
     },
