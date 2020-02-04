@@ -2,8 +2,9 @@ const {Consumer} = require('sqs-consumer');
 const AWS = require('aws-sdk');
 const dynamodb = new AWS.DynamoDB.DocumentClient({
     region: "eu-west-3",
+    maxRetries: 2,
     httpOptions: {
-      timeout: 40
+        timeout: 4000,
     }
   });
 
