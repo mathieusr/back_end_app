@@ -1,6 +1,11 @@
 const {Consumer} = require('sqs-consumer');
 const AWS = require('aws-sdk');
-const dynamodb = new AWS.DynamoDB.DocumentClient({region: "eu-west-3", credentials: AWS.config.credentials});
+const dynamodb = new AWS.DynamoDB.DocumentClient({
+    region: "eu-west-3",
+    httpOptions: {
+      timeout: 40
+    }
+  });
 
 const sqsProcess = Consumer.create({
     queueUrl: process.env.EVENT_SERVICE_URL,
@@ -29,12 +34,12 @@ const sqsProcess = Consumer.create({
                         }
                     }, (err, data) => {
 
-                        console.log('PUT');
-                        console.log(err);
+                        // console.log('PUT');
+                        // console.log(err);
                     })
 
-                console.log('GET');
-                console.log(err);
+                // console.log('GET');
+                // console.log(err);
             })
         }
     },

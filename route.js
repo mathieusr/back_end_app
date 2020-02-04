@@ -3,7 +3,12 @@ const router = express.Router();
 const AWS = require('aws-sdk');
 const uuid = require('uuid/v4')
 const { validationResult, body } = require('express-validator');
-const dynamodb = new AWS.DynamoDB.DocumentClient({region: "eu-west-3"});
+const dynamodb = new AWS.DynamoDB.DocumentClient({
+  region: "eu-west-3",
+  httpOptions: {
+    timeout: 40
+  }
+});
 
 router.route('/products')
   .get((req, res) => {
