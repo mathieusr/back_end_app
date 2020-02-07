@@ -28,9 +28,21 @@ const sqsProcess = Consumer.create({
                             Id: data.Item.Id
                         },
                         AttributeUpdates: {
-                            Quantity: {
+                            Name: {
                                 Action: 'PUT',
-                                Value: parseInt(message.MessageAttributes.quantity.StringValue)
+                                Value: message.MessageAttributes.name
+                            },
+                            Description: {
+                                Action: 'PUT',
+                                Value: message.MessageAttributes.description
+                            },
+                            Price: {
+                                Action: 'PUT',
+                                Value: parseInt(message.MessageAttributes.price.StringValue)
+                            },
+                            Grade: {
+                                Action: 'PUT',
+                                Value: parseInt(message.MessageAttributes.grade.StringValue)
                             }
                         }
                     }, (err, data) => {
@@ -44,7 +56,7 @@ const sqsProcess = Consumer.create({
             })
         }
     },
-    messageAttributeNames: ['id', 'quantity', 'ttt']
+    messageAttributeNames: ['id', 'name', 'description', 'price', 'grade', 'ttt']
 });
 
 sqsProcess.on('error', (err) => {
