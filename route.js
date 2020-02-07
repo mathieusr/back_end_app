@@ -18,6 +18,10 @@ router.route('/products')
       TableName: 'Product'
     }, (err, data) => {
 
+      console.log("GET products")
+      console.log(err)
+      console.log(data)
+
       if(err)
 
         return res.status(400).json({
@@ -55,6 +59,10 @@ router.route('/products')
           Quantity: req.body.quantity
         }
       }, (err, data) => {
+
+        console.log("put products")
+        console.log(err)
+        console.log(data)
 
         if(err)
 
