@@ -10,6 +10,8 @@ const dynamodb = new AWS.DynamoDB.DocumentClient({
     timeout: 4000,
   }
 });
+const ProductsService = require('./productsService')
+const product = new ProductsService(dynamodb);
 
 router.route('/products')
   .get((req, res) => {
@@ -35,6 +37,8 @@ router.route('/products')
   .post(
     body('name').isString().trim().notEmpty(),
     body('quantity').isInt(),
+    body('description').isString().trim().notEmpty(),
+    body('price').isFloat(),
     ((req, res) => {
 
       const errors = validationResult(req);
@@ -52,7 +56,9 @@ router.route('/products')
         Item: {
           Id: uuid(),
           Name: req.body.name,
-          Quantity: req.body.quantity
+          Quantity: req.body.quantity,
+          Description: req.body.description,
+          Price: req.body.price,
         }
       }, (err, data) => {
 
