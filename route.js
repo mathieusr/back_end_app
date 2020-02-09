@@ -10,8 +10,6 @@ const dynamodb = new AWS.DynamoDB.DocumentClient({
     timeout: 4000,
   }
 });
-const ProductsService = require('./productsService')
-const product = new ProductsService(dynamodb);
 
 router.route('/products')
   .get((req, res) => {
