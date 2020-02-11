@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const AWS = require('aws-sdk');
 const uuid = require('uuid/v4')
 const { validationResult, body } = require('express-validator');
 
