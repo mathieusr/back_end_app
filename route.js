@@ -35,6 +35,12 @@ router.route('/products')
           error: errors.array()
         });
 
+      element.push({
+        name: req.body.name,
+        quantity: req.body.quantity,
+        price: req.body.price,
+      })
+
       return res.send({
         success: true,
         element: {
