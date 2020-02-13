@@ -30,6 +30,7 @@ router.route('/products')
   .post(
     body('name').isString().trim().notEmpty(),
     body('quantity').isInt(),
+    body('quantity').isInt(),
     body('price').isFloat(),
     (req, res) => {
 
