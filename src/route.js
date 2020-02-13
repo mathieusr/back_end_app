@@ -6,7 +6,7 @@ const { validationResult, body } = require('express-validator');
 const element = [
 ]
 
-const a;
+const a = null;
 
 a.test();
 
