@@ -13,6 +13,22 @@ describe('Product tests', () => {
 		expect(res.body).toHaveProperty('element')
 		expect(res.body.element).toHaveLength(0)
 	})
+	it('get 404 error', async () => {
+
+		const res = await request(app)
+			.get('/toto')
+
+		
+		expect(res.status).toEqual(404)
+	})
+	it('post 404 error', async () => {
+
+		const res = await request(app)
+			.post('/toto')
+
+		
+		expect(res.status).toEqual(404)
+	})
 
 	it('insert product', async() => {
 
