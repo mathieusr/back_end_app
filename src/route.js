@@ -6,9 +6,9 @@ const { validationResult, body } = require('express-validator');
 const element = [
 ]
 
-const a = null;
+//const a = null;
 
-a.test();
+//a.test();
 
 router.route('/products')
   .get((req, res) => {
