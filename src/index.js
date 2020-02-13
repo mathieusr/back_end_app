@@ -15,6 +15,9 @@ app.use((req, res) => {
   })
 });
 
-app.listen(PORT, () => console.log(`App running on port ${PORT}`));
+const server = app.listen(PORT, () => console.log(`App running on port ${PORT}`));
 
-module.exports = app
+module.exports = {
+  app,
+  server
+}

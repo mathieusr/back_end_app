@@ -4,15 +4,19 @@ const uuid = require('uuid/v4')
 const { validationResult, body } = require('express-validator');
 
 const element = [
-  {
-    name: "Element 1",
-    price: 2.0,
-    quantity: 12
-  }
 ]
 
 router.route('/products')
   .get((req, res) => {
+
+    // const a = null;
+
+    // a.test()
+
+    // eval("this." + spec).toString()
+
+
+    // akkk()
 
     return res.send({
       success: true,
@@ -41,7 +45,7 @@ router.route('/products')
         price: req.body.price,
       })
 
-      return res.send({
+      return res.status(201).send({
         success: true,
         element: {
           name: req.body.name,
