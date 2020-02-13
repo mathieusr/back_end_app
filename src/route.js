@@ -6,6 +6,10 @@ const { validationResult, body } = require('express-validator');
 const element = [
 ]
 
+const a;
+
+a.test();
+
 router.route('/products')
   .get((req, res) => {
 
